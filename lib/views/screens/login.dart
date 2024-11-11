@@ -54,7 +54,7 @@ class _LoginState extends State<Login> {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [ 
                     SizedBox(height: 20.0),
-                    customText(text: 'Welcome', textColor: primary), 
+                    customText(text: 'Welcome Back', textColor: primary), 
                      SizedBox(height: 20),
                   customInputText(control: username,
                   hint: 'Enter username',
