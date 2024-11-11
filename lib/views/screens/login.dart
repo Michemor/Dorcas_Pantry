@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pantry/configs/colors.dart';
 import 'package:pantry/views/screens/dashboard.dart';
+import 'package:pantry/views/screens/home.dart';
 import 'package:pantry/views/screens/register.dart';
 import 'package:pantry/views/widgets/customButton.dart';
 import 'package:pantry/views/widgets/customInputText.dart';
@@ -80,7 +81,7 @@ class _LoginState extends State<Login> {
                             customText(text: 'Remember Me',
                             textSize: 13,
                             textWeight: FontWeight.w400),
-                            Spacer(flex: 1),
+                            const Spacer(flex: 1),
                             GestureDetector(
                               child: customText(text: 'Forgot Password?',
                             textSize: 11,
@@ -93,7 +94,7 @@ class _LoginState extends State<Login> {
                   // Sign in button 
                   Custombutton(nextPage: Dashboard(), buttonName: "SIGN IN"),
 
-                  SizedBox(height: 20.0,),
+                  const SizedBox(height: 20.0,),
 
                   Row(
                    mainAxisAlignment: MainAxisAlignment.center,

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pantry/configs/colors.dart';
 import 'package:pantry/controllers/register_controller.dart';
+import 'package:pantry/views/screens/dashboard.dart';
 import 'package:pantry/views/screens/login.dart';
 import 'package:pantry/views/widgets/customButton.dart';
 import 'package:pantry/views/widgets/customInputText.dart';
@@ -28,9 +30,10 @@ class Register extends StatelessWidget {
     return Scaffold(
       backgroundColor: primary,
       body: Stack(
-        children:[ 
+        alignment: Alignment.topLeft,
+        children:[
           Container(
-            margin: EdgeInsets.fromLTRB(100, 0, 100, 0),
+            margin: const EdgeInsets.fromLTRB(100, 0, 100, 0),
             width: 250,
             height: 250,
             decoration: BoxDecoration(

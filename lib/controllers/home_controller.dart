@@ -5,3 +5,5 @@ class Homecontroller extends GetxController{
 
   updateSelectedPage(index) => selectedPage.value = index;
 }
+
+
