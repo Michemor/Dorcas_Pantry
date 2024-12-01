@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pantry/configs/colors.dart';
 import 'package:pantry/controllers/home_controller.dart';
-import 'package:pantry/views/screens/donate.dart';
 import 'package:pantry/views/screens/home.dart';
 import 'package:pantry/views/screens/profile.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
@@ -26,7 +25,7 @@ class BottomNav extends StatelessWidget {
         items: pages,
         currentIndex: currentPage,
         backgroundColor: primary,
-        itemPadding: EdgeInsets.all(10),
+        itemPadding: const EdgeInsets.all(10),
         onTap: (index) { changePage(index);},
     );
   }

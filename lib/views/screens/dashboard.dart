@@ -5,11 +5,10 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pantry/configs/colors.dart';
 import 'package:pantry/controllers/home_controller.dart';
-import 'package:pantry/views/screens/donate.dart';
+import 'package:pantry/views/screens/event.dart';
 import 'package:pantry/views/screens/home.dart';
 import 'package:pantry/views/screens/profile.dart';
 import 'package:pantry/views/widgets/bottomNav.dart';
-import 'package:pantry/views/widgets/logo.dart';
 import 'package:salomon_bottom_bar/salomon_bottom_bar.dart';
 
 Homecontroller homeController = Get.put(Homecontroller());
@@ -27,7 +26,7 @@ Homecontroller homeController = Get.put(Homecontroller());
 
 List <Widget> screens  = [
   const Home(), 
-  const Donate(), 
+  const Event(), 
   const Profile()];
 
 class Dashboard extends StatefulWidget {
@@ -49,8 +48,8 @@ class _DashboardState extends State<Dashboard> {
 
       // Donation button
       SalomonBottomBarItem(
-        icon: Icon(Icons.add), 
-        title: Text("Donate"),
+        icon: Icon(Icons.ads_click_sharp), 
+        title: Text("Events"),
         selectedColor: white,
         unselectedColor: secondary,
         ),

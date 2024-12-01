@@ -1,6 +1,8 @@
 
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pantry/configs/colors.dart';
+import 'package:pantry/views/screens/login.dart';
 
 navBar({
   required Text navTitle,
@@ -16,15 +18,7 @@ navBar({
     ),
     title: navTitle,
     foregroundColor: white,
-    actions: [
-      IconButton(
-        onPressed: () {}, 
-        icon: Icon(Icons.logout),
-        ),
-        IconButton(
-        onPressed: () {}, 
-        icon: Icon(Icons.settings),
-        ),
-    ],
+     centerTitle: true,
+     leading: null,
   );
 }

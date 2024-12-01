@@ -1,0 +1,16 @@
+ Row(
+                children: [
+                  Text('Edit profile',
+                  style: GoogleFonts.montserrat(
+                    textStyle: TextStyle(
+                      color: Colors.black45,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 15,
+                      
+                    ),
+                  ),),
+                  const Icon(
+                    Icons.edit,
+                    color: Colors.black45,
+                    size: 18,)
+                ])),

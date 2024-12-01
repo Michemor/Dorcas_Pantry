@@ -1,18 +1,12 @@
-
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'package:pantry/configs/colors.dart';
-import 'package:pantry/controllers/home_controller.dart';
-import 'package:pantry/views/screens/dashboard.dart';
-import 'package:pantry/views/screens/donate.dart';
-import 'package:pantry/views/screens/profile.dart';
-import 'package:pantry/views/widgets/activityCard.dart';
-import 'package:pantry/views/widgets/bottomNav.dart';
-import 'package:pantry/views/widgets/customText.dart';
+import 'package:pantry/views/screens/login.dart';
+import 'package:pantry/views/widgets/eventSlider.dart';
+import 'package:pantry/views/widgets/ministries.dart';
 import 'package:pantry/views/widgets/nav.dart';
-import 'package:weekly_calendar/weekly_calendar.dart';
-
-
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -22,123 +16,105 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
- 
-
   @override
   Widget build(BuildContext context) {
-    return  Scaffold(
-      appBar: navBar(navTitle: const Text("Home")),
-      backgroundColor: white,
-      body: Column(
-        children: [
-          const SizedBox(height: 20,),
-          customText(
-            text: greeting(),
-            textSize: 18,
-            textWeight: FontWeight.w500,
-            
-          ),
-      //    Card(
-      //      margin: const EdgeInsets.fromLTRB(20, 10, 20, 20),
-      //      color: const Color.fromARGB(255, 255, 255, 255),
-      //      elevation: 2,            
-      //      shape: const RoundedRectangleBorder(
-      //        borderRadius: BorderRadius.zero,
-      //      ),
-      //
-      //      child:
-      //            Padding(
-      //              padding: const EdgeInsets.all(10.0),
-      //              child: Column(
-      //                mainAxisAlignment: MainAxisAlignment.start,
-      //                children: [
-      //                  Text('Current Donations',
-      //                  style: GoogleFonts.roboto(
-      //                    textStyle: TextStyle(
-      //                      color: primary,
-      //                      fontWeight: FontWeight.w500,
-      //                      fontSize: 15,
-      //                    ),
-      //                  ),),
-      //
-      //                  SizedBox(height: 10.0,),
-      //                  const LinearProgressIndicator(
-      //                    value: 0.2,
-      //                    backgroundColor: secondary,
-      //                    color: primary,
-      //                  ),
-      //                  SizedBox(height: 10.0,),
-      //                 Text('20% to target',
-      //                  style: GoogleFonts.roboto(
-      //                    textStyle: const TextStyle(
-      //                      color: black,
-      //                      fontWeight: FontWeight.w500,
-      //                    ),
-      //                  )
-                      // )
-                      
-           const Divider(
-             indent: 10,
-             endIndent: 10,
-            ), 
-
-            const WeeklyCalendar(
-              calendarStyle: CalendarStyle(
-                locale: "en",
-                headerDateTextAlign: Alignment.topLeft,
-                isShowFooterDateText: false,
-      
+    return Scaffold(
+      // app bar
+      appBar: AppBar(
+        backgroundColor: primary,
+        toolbarHeight: 100,
+        foregroundColor: white,
+        leading: Container(
+          margin: const EdgeInsets.fromLTRB(10, 0, 0, 0),
+          child: const CircleAvatar(
+                  backgroundImage: AssetImage(
+                    'assets/images/sunrise.jpeg'
+                ),
               ),
+        ),
+            title: Column(
+              children: [
+                Text('Hi Jema',
+                style: GoogleFonts.montserrat(
+                  textStyle: const TextStyle(
+                    fontSize: 20,
+                    fontWeight: FontWeight.w600,
+                  )
+                ),),
+                Text(greetUser(),
+                style: GoogleFonts.montserrat(
+                  textStyle: const TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w500,          
+                  )
+                ),),
+              ]
+            ),
+            
+            ),
+    
+    // body
+
+    body: SingleChildScrollView(
+      child: Container(
+        margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            SizedBox(height: 20),
+            Text('Today\'s activity',
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: primary,
+              )
+            ),),
+            Divider(
+              color: grey,
+              indent: 5,
+              endIndent: 	10,
             ),
 
-            customText( text: 'Ongoing Activities',
-            textSize: 18,
-            textWeight: FontWeight.w500),
-            Expanded(
-
-              child: ListView(
-                
-                children: const [
-                  Activitycard(
-                    title: Text('Children\s home visit'),
-                    subtitle: Text('Visit to Taraja Boy\'s home'),
-                    someIcon: Icon(Icons.handshake),
-                  ),
-                  Activitycard(
-                    title: Text('DUSA Children\'s home visit'),
-                    subtitle: Text('Pillars of Hope'),
-                    someIcon: Icon(Icons.add_reaction_rounded),
-                  ),
-                  Activitycard(
-                    title: Text('DCF: Hands to Work'),
-                    subtitle: Text('Community Service Daystar Market'),
-                    someIcon: Icon(Icons.add_task),
-                  ),
-                ],
-              ),
-            )
-           
-                      ],
-                    ),
+            // carousel slider for ongoing activities
+            Eventslider(),
+          Text('Serve Teams',
+            style: GoogleFonts.roboto(
+              textStyle: const TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.w600,
+                color: primary,
+              )
+            ),),
+            Divider(
+              color: grey,
+              indent: 5,
+              endIndent: 	10,
+            ),
+            SizedBox(
+              width: 500,
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: Ministries()),
+          ],
+        ),
+      ),
+    ),
+    
     );
+  }
+
+  String greetUser(){
+    final currentTime = DateTime.now();
+    final hour = currentTime.hour;
+
+    if (hour < 12) {
+      return 'Good Morning';
+    } else if (hour >= 12 && hour < 16) {
+      return 'Good Afternoon';
+    } else {
+      return 'Good Evening';
     }
-String greeting(){
-
-  DateTime now = DateTime.now();
-  var greet = "";
-  if (now.hour >= 6 && now.hour < 12) {
-    greet = "Good morning";
   }
-  else if (now.hour >= 12 && now.hour <= 16){
-    greet = "Good afternoon";
-  } else {
-    greet = "Good evening";
-  }
-
-  return greet;
-
 }
 
-
-}
 

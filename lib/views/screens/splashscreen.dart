@@ -4,8 +4,6 @@ import 'package:get/get.dart';
 import 'package:pantry/configs/colors.dart';
 import 'package:pantry/views/screens/login.dart';
 import 'package:pantry/views/widgets/customText.dart';
-import 'package:pantry/views/widgets/gradient.dart';
-// ignore: unused_import
 import 'package:pantry/views/widgets/logo.dart';
 
 class Splashscreen extends StatelessWidget {
@@ -14,9 +12,8 @@ class Splashscreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: gradient(
-        context: context,
-        childWid: Container(
+      backgroundColor: primary,
+      body: Container(
           alignment: Alignment.center,
           margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
           child: Column(
@@ -55,7 +52,7 @@ class Splashscreen extends StatelessWidget {
               ))
             ],
           ),
-        ))
-    );
+        )
+        );
     }
   }
